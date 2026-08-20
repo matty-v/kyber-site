@@ -1,0 +1,33 @@
+---
+const steps = [
+	{
+		title: 'Install the chart',
+		body: 'One Helm install from the published OCI chart brings up the control plane, the console, and the API on any Kubernetes cluster, local k3d included.',
+	},
+	{
+		title: 'Create your agents',
+		body: 'Define each agent in the console: its runtime (Claude Code or Codex), its resources, its git-backed identity. Kyber schedules a sandboxed pod with a persistent disk.',
+	},
+	{
+		title: 'Put them to work',
+		body: 'Chat over Telegram or Discord, watch the fleet from the dashboard, put agents on cron schedules, and let them hand work to each other while you are away.',
+	},
+];
+---
+
+<section class="ky-section">
+	<div class="ky-section-header">
+		<span class="ky-kicker">How it works</span>
+		<h2>From empty cluster to working fleet</h2>
+	</div>
+	<div class="ky-steps">
+		{
+			steps.map((s) => (
+				<div class="ky-step">
+					<h3>{s.title}</h3>
+					<p>{s.body}</p>
+				</div>
+			))
+		}
+	</div>
+</section>

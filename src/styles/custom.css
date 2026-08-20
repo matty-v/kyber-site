@@ -1,0 +1,363 @@
+/* Kyber brand theme for Starlight.
+   Brand: cut-gem cyan #4ECDDB on a GitHub-dark neutral scale (#0D1117 … #E6EDF3). */
+
+/* Dark mode (default) */
+:root {
+	--sl-color-accent-low: #10333a;
+	--sl-color-accent: #22a3b5;
+	--sl-color-accent-high: #9adfe8;
+	--sl-color-white: #e6edf3;
+	--sl-color-gray-1: #c3cdd8;
+	--sl-color-gray-2: #a8b3bf;
+	--sl-color-gray-3: #7d8894;
+	--sl-color-gray-4: #3a4450;
+	--sl-color-gray-5: #232b35;
+	--sl-color-gray-6: #161d26;
+	--sl-color-black: #0d1117;
+
+	--kyber-accent: #4ecddb;
+	--kyber-hero-glow: rgba(78, 205, 219, 0.14);
+	--kyber-card-border: #232b35;
+	--kyber-card-bg: #12181f;
+	--kyber-terminal-bg: #0a0e13;
+}
+
+/* Light mode */
+:root[data-theme='light'] {
+	--sl-color-accent-low: #d3f0f4;
+	--sl-color-accent: #0b7d8c;
+	--sl-color-accent-high: #0d3a40;
+	--sl-color-white: #14191f;
+	--sl-color-gray-1: #232b35;
+	--sl-color-gray-2: #3a4450;
+	--sl-color-gray-3: #5b6673;
+	--sl-color-gray-4: #a8b3bf;
+	--sl-color-gray-5: #d5dbe2;
+	--sl-color-gray-6: #eef1f5;
+	--sl-color-gray-7: #f6f8fa;
+	--sl-color-black: #ffffff;
+
+	--kyber-accent: #0b7d8c;
+	--kyber-hero-glow: rgba(78, 205, 219, 0.22);
+	--kyber-card-border: #d5dbe2;
+	--kyber-card-bg: #ffffff;
+	--kyber-terminal-bg: #0d1117;
+}
+
+/* ---------- Landing page ---------- */
+
+.ky-hero {
+	position: relative;
+	padding: 4.5rem 0 2.5rem;
+	text-align: center;
+	overflow: hidden;
+}
+.ky-hero::before {
+	content: '';
+	position: absolute;
+	inset: -40% -20% auto;
+	height: 130%;
+	background: radial-gradient(ellipse at 50% 0%, var(--kyber-hero-glow), transparent 65%);
+	pointer-events: none;
+}
+.ky-hero > * {
+	position: relative;
+}
+.ky-hero h1 {
+	font-size: clamp(2.2rem, 5vw, 3.4rem);
+	line-height: 1.12;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	color: var(--sl-color-white);
+	margin: 0 auto 1rem;
+	max-width: 46rem;
+}
+.ky-hero .ky-tagline {
+	font-size: clamp(1.05rem, 2vw, 1.25rem);
+	color: var(--sl-color-gray-2);
+	max-width: 42rem;
+	margin: 0 auto 2rem;
+	line-height: 1.6;
+}
+.ky-hero .ky-accent {
+	color: var(--kyber-accent);
+}
+
+.ky-actions {
+	display: flex;
+	gap: 0.9rem;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-bottom: 2.75rem;
+}
+.ky-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.7rem 1.4rem;
+	border-radius: 0.55rem;
+	font-weight: 600;
+	font-size: 1rem;
+	text-decoration: none;
+	transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+.ky-btn-primary {
+	background: var(--kyber-accent);
+	color: #06252a;
+}
+:root[data-theme='light'] .ky-btn-primary {
+	color: #ffffff;
+}
+.ky-btn-primary:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 6px 20px rgba(78, 205, 219, 0.35);
+}
+.ky-btn-secondary {
+	border: 1px solid var(--sl-color-gray-4);
+	color: var(--sl-color-white);
+	background: transparent;
+}
+.ky-btn-secondary:hover {
+	border-color: var(--kyber-accent);
+	transform: translateY(-1px);
+}
+
+/* Terminal card */
+.ky-terminal {
+	max-width: 44rem;
+	margin: 0 auto;
+	text-align: left;
+	background: var(--kyber-terminal-bg);
+	border: 1px solid var(--kyber-card-border);
+	border-radius: 0.75rem;
+	overflow: hidden;
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+:root[data-theme='light'] .ky-terminal {
+	border-color: #2c3440;
+}
+.ky-terminal-bar {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.55rem 0.9rem;
+	border-bottom: 1px solid #1b2330;
+}
+.ky-terminal-bar span {
+	width: 0.65rem;
+	height: 0.65rem;
+	border-radius: 50%;
+	background: #3a4450;
+}
+.ky-terminal-bar span:first-child {
+	background: #4ecddb;
+}
+.ky-terminal pre {
+	margin: 0;
+	padding: 1rem 1.2rem 1.2rem;
+	background: transparent;
+	border: 0;
+	font-size: 0.85rem;
+	line-height: 1.65;
+	overflow-x: auto;
+}
+.ky-terminal code {
+	background: transparent;
+	color: #c3cdd8;
+}
+.ky-terminal .ky-cmd {
+	color: #e6edf3;
+}
+.ky-terminal .ky-comment {
+	color: #7d8894;
+}
+.ky-terminal .ky-cyan {
+	color: #4ecddb;
+}
+
+/* Screenshot frame */
+.ky-screenshot {
+	margin: 3rem auto 0;
+	max-width: 62rem;
+	border-radius: 0.9rem;
+	overflow: hidden;
+	border: 1px solid var(--kyber-card-border);
+	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+	line-height: 0;
+}
+.ky-screenshot img {
+	width: 100%;
+	height: auto;
+}
+
+/* Section scaffolding */
+.ky-section {
+	padding: 3.5rem 0 1rem;
+	max-width: 66rem;
+	margin: 0 auto;
+}
+.ky-section-header {
+	text-align: center;
+	max-width: 44rem;
+	margin: 0 auto 2.4rem;
+}
+.ky-kicker {
+	display: block;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	font-size: 0.8rem;
+	font-weight: 700;
+	color: var(--kyber-accent);
+	margin-bottom: 0.6rem;
+}
+.ky-section-header h2 {
+	font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+	color: var(--sl-color-white);
+	margin: 0 0 0.75rem;
+	letter-spacing: -0.015em;
+}
+.ky-section-header p {
+	color: var(--sl-color-gray-2);
+	font-size: 1.05rem;
+	line-height: 1.6;
+	margin: 0;
+}
+
+/* Card grids */
+.ky-grid {
+	display: grid;
+	gap: 1.1rem;
+	grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+}
+.ky-card {
+	background: var(--kyber-card-bg);
+	border: 1px solid var(--kyber-card-border);
+	border-radius: 0.8rem;
+	padding: 1.4rem 1.5rem;
+	transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.ky-card:hover {
+	border-color: var(--kyber-accent);
+}
+.ky-card h3 {
+	font-size: 1.05rem;
+	color: var(--sl-color-white);
+	margin: 0 0 0.5rem;
+	display: flex;
+	align-items: center;
+	gap: 0.55rem;
+}
+.ky-card p {
+	color: var(--sl-color-gray-2);
+	font-size: 0.95rem;
+	line-height: 1.6;
+	margin: 0;
+}
+.ky-card-icon {
+	width: 1.35rem;
+	height: 1.35rem;
+	flex: none;
+	color: var(--kyber-accent);
+}
+
+/* Linked cards (use cases) */
+a.ky-card {
+	display: block;
+	text-decoration: none;
+}
+a.ky-card .ky-more {
+	display: inline-block;
+	margin-top: 0.85rem;
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: var(--kyber-accent);
+}
+
+/* Steps */
+.ky-steps {
+	display: grid;
+	gap: 1.1rem;
+	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+	counter-reset: ky-step;
+}
+.ky-step {
+	position: relative;
+	padding: 1.3rem 1.4rem 1.3rem 1.4rem;
+	background: var(--kyber-card-bg);
+	border: 1px solid var(--kyber-card-border);
+	border-radius: 0.8rem;
+}
+.ky-step::before {
+	counter-increment: ky-step;
+	content: counter(ky-step);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.7rem;
+	height: 1.7rem;
+	border-radius: 50%;
+	background: var(--kyber-accent);
+	color: #06252a;
+	font-weight: 700;
+	font-size: 0.9rem;
+	margin-bottom: 0.8rem;
+}
+:root[data-theme='light'] .ky-step::before {
+	color: #ffffff;
+}
+.ky-step h3 {
+	font-size: 1rem;
+	color: var(--sl-color-white);
+	margin: 0 0 0.45rem;
+}
+.ky-step p {
+	color: var(--sl-color-gray-2);
+	font-size: 0.92rem;
+	line-height: 1.55;
+	margin: 0;
+}
+
+/* Status strip */
+.ky-strip {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem 2.2rem;
+	justify-content: center;
+	padding: 2.2rem 1rem;
+	margin: 3.5rem auto 0;
+	border-top: 1px solid var(--kyber-card-border);
+	border-bottom: 1px solid var(--kyber-card-border);
+	max-width: 66rem;
+}
+.ky-strip div {
+	color: var(--sl-color-gray-2);
+	font-size: 0.92rem;
+	display: flex;
+	align-items: center;
+	gap: 0.45rem;
+}
+.ky-strip strong {
+	color: var(--sl-color-white);
+}
+
+/* Final CTA */
+.ky-final {
+	text-align: center;
+	padding: 4rem 1rem 2rem;
+}
+.ky-final h2 {
+	font-size: clamp(1.6rem, 3vw, 2.1rem);
+	color: var(--sl-color-white);
+	margin-bottom: 0.9rem;
+}
+.ky-final p {
+	color: var(--sl-color-gray-2);
+	max-width: 38rem;
+	margin: 0 auto 1.8rem;
+	line-height: 1.6;
+}
+
+/* Give the splash landing page a little breathing room */
+[data-has-hero] .main-frame {
+	padding-top: 0;
+}

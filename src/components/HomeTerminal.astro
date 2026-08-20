@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets';
+import dashboard from '../assets/pwa-dashboard.png';
+---
+
+<div class="ky-terminal">
+	<div class="ky-terminal-bar"><span></span><span></span><span></span></div>
+	<pre><code><span class="ky-comment"># Install from the published Helm chart. Nothing to pin, no fork.</span>
+<span class="ky-cmd">helm install kyber <span class="ky-cyan">oci://ghcr.io/matty-v/charts/kyber</span> \
+  --namespace kyber-system --wait</span>
+<span class="ky-comment"># 15 minutes from an empty cluster to a live fleet console</span></code></pre>
+</div>
+
+<figure class="ky-screenshot">
+	<Image
+		src={dashboard}
+		alt="The Kyber fleet console: dashboard with agent status, per-agent context pressure, and a live terminal peek"
+		loading="eager"
+	/>
+</figure>
