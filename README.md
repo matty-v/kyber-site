@@ -17,18 +17,24 @@ npm run build    # static build to dist/
 ## Structure
 
 - `src/content/docs/index.mdx` — the landing page (Starlight splash template + custom components in `src/components/`)
-- `src/content/docs/docs/` — the docs section (`/docs/*`)
-- `src/content/docs/use-cases/` — use-case pages (`/use-cases/*`)
 - `src/styles/custom.css` — the Kyber brand theme (cyan `#4ECDDB` on a GitHub-dark neutral scale)
-- Docs pages are curated summaries; the deep guides stay canonical in
-  [`matty-v/kyber/docs`](https://github.com/matty-v/kyber/tree/main/docs) and are
-  linked from every page, so the two sets do not drift.
+- **All docs pages are mirrored, not authored here.** `scripts/sync-docs.mjs`
+  (run automatically by `npm run dev` / `npm run build`) pulls
+  [`matty-v/kyber/docs/product`](https://github.com/matty-v/kyber/tree/main/docs/product)
+  and generates `src/content/docs/{getting-started,capabilities,use-cases,project}/`
+  plus the sidebar (`src/generated/sidebar.json`) from that tree's
+  `manifest.json`. To change docs content, PR the kyber repo, not this one.
+- For a local docs loop against a kyber checkout:
+  `KYBER_DOCS_DIR=~/dev/kyber npm run dev`.
 
 ## CI/CD
 
 - `test.yml` — build on PRs and main
 - `preview.yml` — PRs get a temporary Firebase preview channel (7 days)
-- `deploy.yml` — push to main deploys to the live channel
+- `deploy.yml` — deploys to the live channel on: push to main, a
+  `kyber-docs-updated` repository dispatch (fired by the kyber repo's
+  `notify-site.yml` when `docs/product/` changes on its main), a 6-hourly
+  scheduled safety net, and manual dispatch
 
 Deploys need the `FIREBASE_SERVICE_ACCOUNT` repo secret. One-time setup lives in
 [`scripts/bootstrap-firebase.sh`](scripts/bootstrap-firebase.sh); run it anywhere
