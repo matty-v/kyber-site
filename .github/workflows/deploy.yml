@@ -3,6 +3,14 @@ name: deploy
 on:
   push:
     branches: [main]
+  # The kyber repo fires this when docs/product/ changes on its main branch,
+  # so docs edits there go live here within minutes.
+  repository_dispatch:
+    types: [kyber-docs-updated]
+  # Safety net: rebuild every 6 hours in case a dispatch is missed.
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
 
 jobs:
   deploy:

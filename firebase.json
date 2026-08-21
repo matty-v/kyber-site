@@ -4,6 +4,21 @@
     "public": "dist",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "cleanUrls": false,
+    "redirects": [
+      { "source": "/docs/what-is-kyber{,/**}", "destination": "/getting-started/what-is-kyber/", "type": 301 },
+      { "source": "/docs/quickstart{,/**}", "destination": "/getting-started/quickstart/", "type": 301 },
+      { "source": "/docs/installation{,/**}", "destination": "/getting-started/installation/", "type": 301 },
+      { "source": "/docs/fleet-console{,/**}", "destination": "/capabilities/fleet-console/", "type": 301 },
+      { "source": "/docs/agents-and-persistence{,/**}", "destination": "/capabilities/agents-and-persistence/", "type": 301 },
+      { "source": "/docs/chat-channels{,/**}", "destination": "/capabilities/chat-channels/", "type": 301 },
+      { "source": "/docs/memory-and-identity{,/**}", "destination": "/capabilities/memory-and-identity/", "type": 301 },
+      { "source": "/docs/scheduled-jobs{,/**}", "destination": "/capabilities/scheduled-jobs/", "type": 301 },
+      { "source": "/docs/runtimes{,/**}", "destination": "/capabilities/runtimes/", "type": 301 },
+      { "source": "/docs/multi-cluster-and-api{,/**}", "destination": "/capabilities/multi-cluster-and-api/", "type": 301 },
+      { "source": "/docs/architecture{,/**}", "destination": "/project/architecture/", "type": 301 },
+      { "source": "/docs/security{,/**}", "destination": "/project/security/", "type": 301 },
+      { "source": "/docs/faq{,/**}", "destination": "/project/faq/", "type": 301 }
+    ],
     "headers": [
       {
         "source": "/_astro/**",
