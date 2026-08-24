@@ -92,7 +92,7 @@ main:has([data-rotating-hero]) > .content-panel:first-of-type {
 }
 .ky-hero-choice {
 	display: inline-block;
-	width: 10ch;
+	width: 11.5ch;
 	padding: 0 0.06em 0.08em;
 	border-bottom: 0.08em solid color-mix(in srgb, var(--kyber-accent) 75%, transparent);
 	color: var(--kyber-accent);
@@ -109,7 +109,7 @@ main:has([data-rotating-hero]) > .content-panel:first-of-type {
 	animation: ky-slot-down 0.38s cubic-bezier(0.22, 0.8, 0.32, 1);
 }
 .ky-hero-location {
-	width: 14.5ch;
+	width: 15.5ch;
 }
 @keyframes ky-slot-down {
 	from {
