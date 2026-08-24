@@ -82,6 +82,7 @@ main:has([data-rotating-hero]) > .content-panel:first-of-type {
 	justify-content: center;
 	gap: 0.28em;
 	width: 100%;
+	white-space: nowrap;
 }
 .ky-hero .ky-tagline {
 	font-size: clamp(1.05rem, 2vw, 1.25rem);
@@ -472,7 +473,14 @@ a.ky-card .ky-more {
 		padding: 3rem 0 2rem;
 	}
 	.ky-hero h1 {
-		font-size: clamp(2rem, 10.5vw, 3rem);
+		font-size: clamp(1.7rem, 8vw, 2.2rem);
+	}
+	.ky-hero-choice {
+		width: 11ch;
+		font-size: 0.86em;
+	}
+	.ky-hero-location {
+		width: 16.5ch;
 	}
 	.ky-agent-pods {
 		grid-template-columns: 1fr;
