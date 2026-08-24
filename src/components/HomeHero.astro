@@ -22,12 +22,11 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <section class="ky-hero" data-rotating-hero>
-	<h1 aria-label="Kyber: run your AI agent wherever you work">
-		<span class="ky-hero-brand">Kyber:</span>
+	<h1 aria-label="Run your AI agent wherever you work">
 		<span>Run your</span>
-		<span class="ky-hero-choice" aria-hidden="true" data-agent-type>{agentTypes[0]}</span>
+		<span class="ky-hero-choice" aria-hidden="true"><span data-agent-type>{agentTypes[0]}</span></span>
 		<span>agent</span>
-		<span class="ky-hero-choice ky-hero-location" aria-hidden="true" data-location>{locations[0]}</span>
+		<span class="ky-hero-choice ky-hero-location" aria-hidden="true"><span data-location>{locations[0]}</span></span>
 	</h1>
 	<p class="ky-tagline">
 		Long-lived AI agents with their own durable environment, managed as a fleet on
@@ -54,12 +53,11 @@ const base = import.meta.env.BASE_URL;
 
 	const render = () => {
 		if (!(agentType instanceof HTMLElement) || !(location instanceof HTMLElement)) return;
-		hero?.classList.add('is-changing');
-		window.setTimeout(() => {
-			agentType.textContent = agentTypes[index % agentTypes.length];
-			location.textContent = locations[index % locations.length];
-			hero?.classList.remove('is-changing');
-		}, 160);
+		agentType.textContent = agentTypes[index % agentTypes.length];
+		location.textContent = locations[index % locations.length];
+		hero?.classList.remove('is-rolling');
+		void hero?.clientWidth;
+		hero?.classList.add('is-rolling');
 	};
 
 	const stop = () => {

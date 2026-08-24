@@ -46,6 +46,10 @@
 
 /* ---------- Landing page ---------- */
 
+main:has([data-rotating-hero]) > .content-panel:first-of-type {
+	display: none;
+}
+
 .ky-hero {
 	position: relative;
 	padding: 4.5rem 1rem 2.5rem;
@@ -77,9 +81,6 @@
 	margin: 0 auto 1rem;
 	max-width: 74rem;
 }
-.ky-hero-brand {
-	color: var(--kyber-accent);
-}
 .ky-hero .ky-tagline {
 	font-size: clamp(1.05rem, 2vw, 1.25rem);
 	color: var(--sl-color-gray-2);
@@ -88,35 +89,33 @@
 	line-height: 1.6;
 }
 .ky-hero-choice {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
+	display: inline-block;
 	min-width: 11ch;
-	padding: 0.08em 0.34em 0.13em;
-	border: 1px solid color-mix(in srgb, var(--kyber-accent) 65%, transparent);
-	border-radius: 0.2em;
-	background: color-mix(in srgb, var(--kyber-accent) 10%, transparent);
+	padding: 0 0.06em 0.08em;
+	border-bottom: 0.08em solid color-mix(in srgb, var(--kyber-accent) 75%, transparent);
 	color: var(--kyber-accent);
-	box-shadow: inset 0 -0.08em 0 color-mix(in srgb, var(--kyber-accent) 22%, transparent);
 	letter-spacing: -0.045em;
-	transition: opacity 0.16s ease, transform 0.16s ease;
+	overflow: hidden;
+	vertical-align: bottom;
 }
-.ky-hero.is-changing .ky-hero-choice {
-	opacity: 0;
-	transform: translateY(0.12em);
+.ky-hero-choice > span {
+	display: block;
 }
-.ky-hero-choice::after {
-	content: '';
-	width: 0;
-	height: 0;
-	margin-left: 0.25em;
-	border-left: 0.09em solid transparent;
-	border-right: 0.09em solid transparent;
-	border-top: 0.12em solid currentColor;
-	opacity: 0.7;
+.ky-hero.is-rolling .ky-hero-choice > span {
+	animation: ky-slot-down 0.38s cubic-bezier(0.22, 0.8, 0.32, 1);
 }
 .ky-hero-location {
 	min-width: 13.5ch;
+}
+@keyframes ky-slot-down {
+	from {
+		opacity: 0;
+		transform: translateY(-0.72em);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 .ky-rotation-control {
 	border: 0;
@@ -425,8 +424,10 @@ a.ky-card .ky-more {
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.ky-btn,
-	.ky-hero-choice {
+	.ky-btn {
 		transition: none;
+	}
+	.ky-hero.is-rolling .ky-hero-choice > span {
+		animation: none;
 	}
 }
