@@ -266,14 +266,17 @@ main:has([data-rotating-hero]) > .content-panel:first-of-type {
 	display: grid;
 	gap: 1.1rem;
 	grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+	align-items: stretch;
 }
 .ky-card {
-	height: 100%;
 	background: var(--kyber-card-bg);
 	border: 1px solid var(--kyber-card-border);
 	border-radius: 0.8rem;
 	padding: 1.4rem 1.5rem;
 	transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.ky-grid > .ky-card {
+	margin-top: 0;
 }
 .ky-card:hover {
 	border-color: var(--kyber-accent);
