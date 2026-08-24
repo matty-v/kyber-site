@@ -68,11 +68,6 @@ main:has([data-rotating-hero]) > .content-panel:first-of-type {
 	position: relative;
 }
 .ky-hero h1 {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-wrap: wrap;
-	gap: 0.2em 0.28em;
 	font-size: clamp(2.35rem, 5.8vw, 4.6rem);
 	line-height: 1.08;
 	font-weight: 700;
@@ -80,6 +75,13 @@ main:has([data-rotating-hero]) > .content-panel:first-of-type {
 	color: var(--sl-color-white);
 	margin: 0 auto 1rem;
 	max-width: 74rem;
+}
+.ky-hero-line {
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
+	gap: 0.28em;
+	width: 100%;
 }
 .ky-hero .ky-tagline {
 	font-size: clamp(1.05rem, 2vw, 1.25rem);
@@ -90,13 +92,15 @@ main:has([data-rotating-hero]) > .content-panel:first-of-type {
 }
 .ky-hero-choice {
 	display: inline-block;
-	min-width: 11ch;
+	width: 11ch;
 	padding: 0 0.06em 0.08em;
 	border-bottom: 0.08em solid color-mix(in srgb, var(--kyber-accent) 75%, transparent);
 	color: var(--kyber-accent);
 	letter-spacing: -0.045em;
 	overflow: hidden;
+	text-align: left;
 	vertical-align: bottom;
+	white-space: nowrap;
 }
 .ky-hero-choice > span {
 	display: block;
@@ -105,7 +109,7 @@ main:has([data-rotating-hero]) > .content-panel:first-of-type {
 	animation: ky-slot-down 0.38s cubic-bezier(0.22, 0.8, 0.32, 1);
 }
 .ky-hero-location {
-	min-width: 13.5ch;
+	width: 16ch;
 }
 @keyframes ky-slot-down {
 	from {
@@ -417,9 +421,6 @@ a.ky-card .ky-more {
 	}
 	.ky-hero h1 {
 		font-size: clamp(2rem, 10.5vw, 3rem);
-	}
-	.ky-hero-choice {
-		min-width: 0;
 	}
 }
 
