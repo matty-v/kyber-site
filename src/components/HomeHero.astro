@@ -75,7 +75,7 @@ const base = import.meta.env.BASE_URL;
 		timer = window.setInterval(() => {
 			index += 1;
 			render();
-		}, 2800);
+		}, 5000);
 	};
 
 	const updateControl = () => {
@@ -100,5 +100,9 @@ const base = import.meta.env.BASE_URL;
 	});
 
 	updateControl();
+	if (!reduceMotion.matches) {
+		index += 1;
+		render();
+	}
 	start();
 </script>
