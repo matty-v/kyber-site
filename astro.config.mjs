@@ -21,6 +21,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Kyber',
+			disable404Route: true,
 			description:
 				'Run and manage your fleet of AI agents on a Kubernetes cluster. Sandboxed pods, persistent disks, chat from your phone, powered by the subscriptions you already pay for.',
 			logo: {
@@ -28,7 +29,7 @@ export default defineConfig({
 				dark: './src/assets/kyber-lockup-dark.svg',
 				replacesTitle: true,
 			},
-			favicon: '/favicon.svg',
+			favicon: `${base}favicon.svg`,
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/matty-v/kyber' },
 			],

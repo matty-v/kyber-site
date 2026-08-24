@@ -2,12 +2,12 @@
 const features = [
 	{
 		title: 'Long-lived, sandboxed agents',
-		body: 'Each agent owns a whole pod with a persistent disk. Installed packages, cloned repos, credentials, and memory all survive restarts, upgrades, and preemption.',
+		body: 'Each agent owns a whole pod backed by durable storage. Installed packages, cloned repos, credentials, and memory survive pod restarts and upgrades.',
 		icon: 'M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z M3.3 7 12 12l8.7-5 M12 22V12',
 	},
 	{
-		title: 'Any Kubernetes cluster',
-		body: 'A Windows laptop, a spare box, a Mac, or any cloud. On GCP, Kyber provisions the VMs for you, preemptible instances included.',
+		title: 'The Kubernetes cluster you choose',
+		body: 'Run on Kubernetes 1.33+ with containerd 2.0+: a Windows laptop, a spare box, a Mac, or a cloud cluster. Kyber can provision GCP VMs, spot instances included.',
 		icon: 'M17.5 19a4.5 4.5 0 1 0-.4-8.98 6 6 0 1 0-11.6 1.98A4 4 0 0 0 6 19.5Z',
 	},
 	{
@@ -22,7 +22,7 @@ const features = [
 	},
 	{
 		title: 'Schedules and handoffs',
-		body: "Cron inside each agent survives restarts. Agents send each other signed messages, so one agent's output becomes another's next prompt, and can wake it from sleep.",
+		body: "Cron inside each agent survives restarts. Running agents send each other signed messages, so one agent's output becomes another's next prompt.",
 		icon: 'M12 6v6l4 2 M12 22a10 10 0 1 1 10-10 10 10 0 0 1-10 10Z',
 	},
 	{
@@ -36,11 +36,6 @@ const features = [
 <section class="ky-section">
 	<div class="ky-section-header">
 		<span class="ky-kicker">What you can do</span>
-		<h2>A real machine for every agent, not a chat window</h2>
-		<p>
-			Kyber treats agents as infrastructure: each one gets a durable, isolated
-			environment it fully controls, and you get one console to run them all.
-		</p>
 	</div>
 	<div class="ky-grid">
 		{

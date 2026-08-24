@@ -1,0 +1,118 @@
+---
+const agentTypes = [
+	'Claude Code',
+	'Codex',
+	'coding',
+	'code review',
+	'marketing',
+	'assistant',
+	'DevOps',
+	'Infosec',
+	'QA',
+	'docs',
+	'Chatbot',
+];
+
+const locations = [
+	'on Google Cloud',
+	'on AWS',
+	'on your Mac mini',
+	'on your laptop',
+	'on a spot instance',
+	'from Telegram',
+	'from Discord',
+	'on Kubernetes',
+	'from your phone',
+	'while you sleep',
+	'in a sandbox',
+	'autonomously',
+];
+
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="ky-hero" data-rotating-hero>
+	<h1 aria-label="Run your AI agent wherever you work">
+		<span class="ky-hero-line">
+			<span>Run your</span>
+			<span class="ky-hero-choice" aria-hidden="true"><span data-agent-type>{agentTypes[0]}</span></span>
+		</span>
+		<span class="ky-hero-line">
+			<span>agent</span>
+			<span class="ky-hero-choice ky-hero-location" aria-hidden="true"><span data-location>{locations[0]}</span></span>
+		</span>
+	</h1>
+	<p class="ky-tagline">
+		Long-lived AI agents with their own durable environment, managed as a fleet on
+		Kubernetes and reachable from wherever you work.
+	</p>
+	<div class="ky-actions">
+		<a class="ky-btn ky-btn-primary" href={`${base}getting-started/quickstart/`}>Get started</a>
+		<a class="ky-btn ky-btn-secondary" href="https://github.com/matty-v/kyber">View on GitHub</a>
+	</div>
+	<button class="ky-rotation-control" type="button" data-rotation-control>
+		Pause examples
+	</button>
+</section>
+
+<script define:vars={{ agentTypes, locations }}>
+	const hero = document.querySelector('[data-rotating-hero]');
+	const agentType = hero?.querySelector('[data-agent-type]');
+	const location = hero?.querySelector('[data-location]');
+	const control = hero?.querySelector('[data-rotation-control]');
+	const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+	let index = 0;
+	let timer;
+	let manuallyPaused = reduceMotion.matches;
+
+	const render = () => {
+		if (!(agentType instanceof HTMLElement) || !(location instanceof HTMLElement)) return;
+		agentType.textContent = agentTypes[index % agentTypes.length];
+		location.textContent = locations[index % locations.length];
+		hero?.classList.remove('is-rolling');
+		void hero?.clientWidth;
+		hero?.classList.add('is-rolling');
+	};
+
+	const stop = () => {
+		window.clearInterval(timer);
+		timer = undefined;
+	};
+
+	const start = () => {
+		stop();
+		if (manuallyPaused || reduceMotion.matches || hero?.matches(':hover, :focus-within')) return;
+		timer = window.setInterval(() => {
+			index += 1;
+			render();
+		}, 5000);
+	};
+
+	const updateControl = () => {
+		if (!(control instanceof HTMLButtonElement)) return;
+		control.hidden = reduceMotion.matches;
+		control.textContent = manuallyPaused ? 'Play examples' : 'Pause examples';
+	};
+
+	control?.addEventListener('click', () => {
+		manuallyPaused = !manuallyPaused;
+		updateControl();
+		start();
+	});
+	hero?.addEventListener('mouseenter', stop);
+	hero?.addEventListener('mouseleave', start);
+	hero?.addEventListener('focusin', stop);
+	hero?.addEventListener('focusout', start);
+	reduceMotion.addEventListener('change', () => {
+		manuallyPaused = reduceMotion.matches;
+		updateControl();
+		start();
+	});
+
+	updateControl();
+	if (!reduceMotion.matches) {
+		index += 1;
+		render();
+	}
+	start();
+</script>

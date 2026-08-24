@@ -1,24 +1,21 @@
 ---
+const base = import.meta.env.BASE_URL;
+
 const useCases = [
+	{
+		title: 'A fully autonomous dev team',
+		body: 'A team of agents that takes GitHub issues to reviewed, merged pull requests: planner, builders, and reviewers, each in its own pod.',
+		href: `${base}use-cases/autonomous-dev-team/`,
+	},
 	{
 		title: 'A personal agent fleet',
 		body: 'Long-lived assistants that keep their tools, repos, and memory. Always on, on hardware you control.',
-		href: '/use-cases/personal-agent-fleet/',
+		href: `${base}use-cases/personal-agent-fleet/`,
 	},
 	{
-		title: 'An autonomous dev team',
-		body: 'A team of agents that takes GitHub issues to reviewed, merged pull requests: planner, builders, and reviewers, each in its own pod.',
-		href: '/use-cases/autonomous-dev-team/',
-	},
-	{
-		title: 'Ops from your phone',
-		body: 'Run infrastructure through a conversation: assign work from Telegram, approve decisions, and get results without opening a laptop.',
-		href: '/use-cases/ops-from-your-phone/',
-	},
-	{
-		title: 'Scheduled automation',
+		title: 'Scheduled AI automations',
 		body: 'Agents on cron: nightly audits, weekly reports, monitors that investigate before they page you. The schedules survive restarts.',
-		href: '/use-cases/scheduled-automation/',
+		href: `${base}use-cases/scheduled-automation/`,
 	},
 ];
 ---
@@ -26,11 +23,6 @@ const useCases = [
 <section class="ky-section">
 	<div class="ky-section-header">
 		<span class="ky-kicker">Use cases</span>
-		<h2>What people run on Kyber</h2>
-		<p>
-			Kyber is the platform layer under the agents. Here is what fleets look
-			like in practice.
-		</p>
 	</div>
 	<div class="ky-grid">
 		{
