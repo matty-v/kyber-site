@@ -3,6 +3,10 @@ name: preview
 on:
   pull_request:
 
+concurrency:
+  group: firebase-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   preview:
     if: github.event.pull_request.head.repo.full_name == github.repository

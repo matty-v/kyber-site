@@ -1,0 +1,102 @@
+---
+const agentTypes = [
+	'Claude Code',
+	'Codex',
+	'coding',
+	'code review',
+	'marketing',
+	'personal assistant',
+];
+
+const locations = [
+	'on Google Cloud',
+	'on AWS',
+	'on your Mac mini',
+	'on your laptop',
+	'on a spot instance',
+	'from Telegram',
+	'from Discord',
+];
+
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="ky-hero" data-rotating-hero>
+	<h1 aria-label="Kyber: run your AI agent wherever you work">
+		<span class="ky-hero-brand">Kyber:</span>
+		<span>Run your</span>
+		<span class="ky-hero-choice" aria-hidden="true" data-agent-type>{agentTypes[0]}</span>
+		<span>agent</span>
+		<span class="ky-hero-choice ky-hero-location" aria-hidden="true" data-location>{locations[0]}</span>
+	</h1>
+	<p class="ky-tagline">
+		Long-lived AI agents with their own durable environment, managed as a fleet on
+		Kubernetes and reachable from wherever you work.
+	</p>
+	<div class="ky-actions">
+		<a class="ky-btn ky-btn-primary" href={`${base}getting-started/quickstart/`}>Get started</a>
+		<a class="ky-btn ky-btn-secondary" href="https://github.com/matty-v/kyber">View on GitHub</a>
+	</div>
+	<button class="ky-rotation-control" type="button" data-rotation-control>
+		Pause examples
+	</button>
+</section>
+
+<script define:vars={{ agentTypes, locations }}>
+	const hero = document.querySelector('[data-rotating-hero]');
+	const agentType = hero?.querySelector('[data-agent-type]');
+	const location = hero?.querySelector('[data-location]');
+	const control = hero?.querySelector('[data-rotation-control]');
+	const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+	let index = 0;
+	let timer;
+	let manuallyPaused = reduceMotion.matches;
+
+	const render = () => {
+		if (!(agentType instanceof HTMLElement) || !(location instanceof HTMLElement)) return;
+		hero?.classList.add('is-changing');
+		window.setTimeout(() => {
+			agentType.textContent = agentTypes[index % agentTypes.length];
+			location.textContent = locations[index % locations.length];
+			hero?.classList.remove('is-changing');
+		}, 160);
+	};
+
+	const stop = () => {
+		window.clearInterval(timer);
+		timer = undefined;
+	};
+
+	const start = () => {
+		stop();
+		if (manuallyPaused || reduceMotion.matches || hero?.matches(':hover, :focus-within')) return;
+		timer = window.setInterval(() => {
+			index += 1;
+			render();
+		}, 2800);
+	};
+
+	const updateControl = () => {
+		if (!(control instanceof HTMLButtonElement)) return;
+		control.hidden = reduceMotion.matches;
+		control.textContent = manuallyPaused ? 'Play examples' : 'Pause examples';
+	};
+
+	control?.addEventListener('click', () => {
+		manuallyPaused = !manuallyPaused;
+		updateControl();
+		start();
+	});
+	hero?.addEventListener('mouseenter', stop);
+	hero?.addEventListener('mouseleave', start);
+	hero?.addEventListener('focusin', stop);
+	hero?.addEventListener('focusout', start);
+	reduceMotion.addEventListener('change', () => {
+		manuallyPaused = reduceMotion.matches;
+		updateControl();
+		start();
+	});
+
+	updateControl();
+	start();
+</script>

@@ -1,24 +1,26 @@
 ---
+const base = import.meta.env.BASE_URL;
+
 const useCases = [
 	{
 		title: 'A personal agent fleet',
 		body: 'Long-lived assistants that keep their tools, repos, and memory. Always on, on hardware you control.',
-		href: '/use-cases/personal-agent-fleet/',
+		href: `${base}use-cases/personal-agent-fleet/`,
 	},
 	{
 		title: 'An autonomous dev team',
 		body: 'A team of agents that takes GitHub issues to reviewed, merged pull requests: planner, builders, and reviewers, each in its own pod.',
-		href: '/use-cases/autonomous-dev-team/',
+		href: `${base}use-cases/autonomous-dev-team/`,
 	},
 	{
 		title: 'Ops from your phone',
 		body: 'Run infrastructure through a conversation: assign work from Telegram, approve decisions, and get results without opening a laptop.',
-		href: '/use-cases/ops-from-your-phone/',
+		href: `${base}use-cases/ops-from-your-phone/`,
 	},
 	{
 		title: 'Scheduled automation',
 		body: 'Agents on cron: nightly audits, weekly reports, monitors that investigate before they page you. The schedules survive restarts.',
-		href: '/use-cases/scheduled-automation/',
+		href: `${base}use-cases/scheduled-automation/`,
 	},
 ];
 ---
