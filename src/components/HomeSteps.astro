@@ -1,33 +1,44 @@
----
-const steps = [
-	{
-		title: 'Install the chart',
-		body: 'One Helm install from the published OCI chart brings up the control plane, the console, and the API on any Kubernetes cluster, local k3d included.',
-	},
-	{
-		title: 'Create your agents',
-		body: 'Define each agent in the console: its runtime (Claude Code or Codex), its resources, its git-backed identity. Kyber schedules a sandboxed pod with a persistent disk.',
-	},
-	{
-		title: 'Put them to work',
-		body: 'Chat over Telegram or Discord, watch the fleet from the dashboard, put agents on cron schedules, and let them hand work to each other while you are away.',
-	},
-];
----
-
 <section class="ky-section">
 	<div class="ky-section-header">
 		<span class="ky-kicker">How it works</span>
-		<h2>From empty cluster to working fleet</h2>
 	</div>
-	<div class="ky-steps">
-		{
-			steps.map((s) => (
-				<div class="ky-step">
-					<h3>{s.title}</h3>
-					<p>{s.body}</p>
+	<div
+		class="ky-architecture"
+		role="img"
+		aria-label="Kyber entry points connect to a control plane inside a Kubernetes cluster. The control plane manages multiple isolated agent pods, each with its own runtime and persistent disk."
+	>
+		<div class="ky-architecture-content" aria-hidden="true">
+			<div class="ky-entrypoints">
+				<span>Web console</span>
+				<span>API</span>
+				<span>Telegram + Discord</span>
+			</div>
+			<div class="ky-flow-arrow"><span>commands + status</span></div>
+			<div class="ky-cluster">
+				<span class="ky-cluster-label">Kubernetes cluster</span>
+				<div class="ky-control-plane">
+					<strong>Kyber control plane</strong>
+					<span>API · lifecycle controllers · scheduling · telemetry</span>
 				</div>
-			))
-		}
+				<div class="ky-flow-arrow ky-flow-arrow-short"><span>reconciles</span></div>
+				<div class="ky-agent-pods">
+					<div class="ky-agent-pod">
+						<strong>Agent pod</strong>
+						<span>Claude Code</span>
+						<small>Persistent disk</small>
+					</div>
+					<div class="ky-agent-pod">
+						<strong>Agent pod</strong>
+						<span>Codex</span>
+						<small>Persistent disk</small>
+					</div>
+					<div class="ky-agent-pod">
+						<strong>Agent pod</strong>
+						<span>Your runtime</span>
+						<small>Persistent disk</small>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </section>

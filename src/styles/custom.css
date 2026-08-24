@@ -98,7 +98,7 @@ main:has([data-rotating-hero]) > .content-panel:first-of-type {
 	color: var(--kyber-accent);
 	letter-spacing: -0.045em;
 	overflow: hidden;
-	text-align: left;
+	text-align: center;
 	vertical-align: bottom;
 	white-space: nowrap;
 }
@@ -228,21 +228,6 @@ main:has([data-rotating-hero]) > .content-panel:first-of-type {
 	color: #4ecddb;
 }
 
-/* Screenshot frame */
-.ky-screenshot {
-	margin: 3rem auto 0;
-	max-width: 62rem;
-	border-radius: 0.9rem;
-	overflow: hidden;
-	border: 1px solid var(--kyber-card-border);
-	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
-	line-height: 0;
-}
-.ky-screenshot img {
-	width: 100%;
-	height: auto;
-}
-
 /* Section scaffolding */
 .ky-section {
 	padding: 3.5rem 0 1rem;
@@ -283,6 +268,7 @@ main:has([data-rotating-hero]) > .content-panel:first-of-type {
 	grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
 }
 .ky-card {
+	height: 100%;
 	background: var(--kyber-card-bg);
 	border: 1px solid var(--kyber-card-border);
 	border-radius: 0.8rem;
@@ -326,48 +312,130 @@ a.ky-card .ky-more {
 	color: var(--kyber-accent);
 }
 
-/* Steps */
-.ky-steps {
-	display: grid;
-	gap: 1.1rem;
-	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-	counter-reset: ky-step;
+/* Architecture diagram */
+.ky-architecture {
+	max-width: 58rem;
+	margin: 0 auto;
 }
-.ky-step {
-	position: relative;
-	padding: 1.3rem 1.4rem 1.3rem 1.4rem;
-	background: var(--kyber-card-bg);
-	border: 1px solid var(--kyber-card-border);
-	border-radius: 0.8rem;
-}
-.ky-step::before {
-	counter-increment: ky-step;
-	content: counter(ky-step);
-	display: inline-flex;
+.ky-architecture-content {
+	display: flex;
+	flex-direction: column;
 	align-items: center;
+}
+.ky-entrypoints {
+	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
-	width: 1.7rem;
-	height: 1.7rem;
-	border-radius: 50%;
-	background: var(--kyber-accent);
-	color: #06252a;
+	gap: 0.65rem;
+}
+.ky-entrypoints span {
+	padding: 0.55rem 0.9rem;
+	border: 1px solid var(--kyber-card-border);
+	border-radius: 999px;
+	background: var(--kyber-card-bg);
+	color: var(--sl-color-gray-1);
+	font-size: 0.88rem;
+	font-weight: 600;
+}
+.ky-flow-arrow {
+	position: relative;
+	width: 1px;
+	height: 3.2rem;
+	background: var(--sl-color-gray-4);
+}
+.ky-flow-arrow::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: -0.25rem;
+	width: 0.5rem;
+	height: 0.5rem;
+	border-right: 1px solid var(--sl-color-gray-3);
+	border-bottom: 1px solid var(--sl-color-gray-3);
+	transform: rotate(45deg);
+}
+.ky-flow-arrow span {
+	position: absolute;
+	top: 50%;
+	left: 0.8rem;
+	width: max-content;
+	color: var(--sl-color-gray-3);
+	font-size: 0.72rem;
+	transform: translateY(-50%);
+}
+.ky-cluster {
+	position: relative;
+	width: 100%;
+	padding: 2.4rem 1.5rem 1.5rem;
+	border: 1px dashed var(--sl-color-gray-4);
+	border-radius: 1rem;
+	background: color-mix(in srgb, var(--kyber-card-bg) 65%, transparent);
+}
+.ky-cluster-label {
+	position: absolute;
+	top: 0.65rem;
+	left: 1rem;
+	color: var(--sl-color-gray-3);
+	font-size: 0.75rem;
 	font-weight: 700;
-	font-size: 0.9rem;
-	margin-bottom: 0.8rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
 }
-:root[data-theme='light'] .ky-step::before {
-	color: #ffffff;
+.ky-control-plane {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.35rem;
+	max-width: 34rem;
+	margin: 0 auto;
+	padding: 1rem 1.2rem;
+	border: 1px solid var(--kyber-accent);
+	border-radius: 0.7rem;
+	background: var(--kyber-card-bg);
+	text-align: center;
 }
-.ky-step h3 {
+.ky-control-plane strong {
+	color: var(--kyber-accent);
 	font-size: 1rem;
-	color: var(--sl-color-white);
-	margin: 0 0 0.45rem;
 }
-.ky-step p {
+.ky-control-plane span {
 	color: var(--sl-color-gray-2);
-	font-size: 0.92rem;
-	line-height: 1.55;
-	margin: 0;
+	font-size: 0.8rem;
+}
+.ky-flow-arrow-short {
+	height: 2.8rem;
+	margin: 0 auto;
+}
+.ky-agent-pods {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 0.8rem;
+}
+.ky-agent-pod {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+	padding: 1rem;
+	border: 1px solid var(--kyber-card-border);
+	border-radius: 0.65rem;
+	background: var(--kyber-card-bg);
+	text-align: center;
+}
+.ky-agent-pod strong {
+	color: var(--sl-color-white);
+	font-size: 0.9rem;
+}
+.ky-agent-pod span {
+	color: var(--sl-color-gray-2);
+	font-size: 0.84rem;
+}
+.ky-agent-pod small {
+	margin-top: 0.35rem;
+	padding: 0.35rem;
+	border-radius: 0.3rem;
+	background: var(--sl-color-gray-6);
+	color: var(--sl-color-gray-3);
+	font-size: 0.7rem;
 }
 
 /* Status strip */
@@ -421,6 +489,12 @@ a.ky-card .ky-more {
 	}
 	.ky-hero h1 {
 		font-size: clamp(2rem, 10.5vw, 3rem);
+	}
+	.ky-agent-pods {
+		grid-template-columns: 1fr;
+	}
+	.ky-flow-arrow span {
+		display: none;
 	}
 }
 
