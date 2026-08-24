@@ -413,6 +413,7 @@ a.ky-card .ky-more {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 0.8rem;
+	align-items: stretch;
 }
 .ky-agent-pod {
 	display: flex;
@@ -423,6 +424,9 @@ a.ky-card .ky-more {
 	border-radius: 0.65rem;
 	background: var(--kyber-card-bg);
 	text-align: center;
+}
+.ky-agent-pods > .ky-agent-pod {
+	margin-top: 0;
 }
 .ky-agent-pod strong {
 	color: var(--sl-color-white);
@@ -439,29 +443,6 @@ a.ky-card .ky-more {
 	background: var(--sl-color-gray-6);
 	color: var(--sl-color-gray-3);
 	font-size: 0.7rem;
-}
-
-/* Status strip */
-.ky-strip {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.75rem 2.2rem;
-	justify-content: center;
-	padding: 2.2rem 1rem;
-	margin: 3.5rem auto 0;
-	border-top: 1px solid var(--kyber-card-border);
-	border-bottom: 1px solid var(--kyber-card-border);
-	max-width: 66rem;
-}
-.ky-strip div {
-	color: var(--sl-color-gray-2);
-	font-size: 0.92rem;
-	display: flex;
-	align-items: center;
-	gap: 0.45rem;
-}
-.ky-strip strong {
-	color: var(--sl-color-white);
 }
 
 /* Final CTA */
