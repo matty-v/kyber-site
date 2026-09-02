@@ -54,14 +54,16 @@ main:has([data-rotating-hero]) > .content-panel:first-of-type {
 	position: relative;
 	padding: 4.5rem 1rem 2.5rem;
 	text-align: center;
-	overflow: hidden;
 }
 .ky-hero::before {
 	content: '';
 	position: absolute;
-	inset: -40% -20% auto;
-	height: 130%;
-	background: radial-gradient(ellipse at 50% 0%, var(--kyber-hero-glow), transparent 65%);
+	top: -40%;
+	left: 50%;
+	width: 100vw;
+	height: 150%;
+	transform: translateX(-50%);
+	background: radial-gradient(ellipse 50% 70% at 50% 0%, var(--kyber-hero-glow), transparent 100%);
 	pointer-events: none;
 }
 .ky-hero > * {
