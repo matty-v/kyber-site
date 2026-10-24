@@ -9,7 +9,9 @@ concurrency:
 
 jobs:
   preview:
-    if: github.event.pull_request.head.repo.full_name == github.repository
+    # Security fixes keep the independent test/build check without creating
+    # a Firebase preview channel or its storage/deployment side effects.
+    if: github.event.pull_request.head.repo.full_name == github.repository && !startsWith(github.head_ref, 'security/')
     runs-on: ubuntu-latest
     permissions:
       checks: write
