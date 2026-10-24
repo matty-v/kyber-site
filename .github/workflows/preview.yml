@@ -9,9 +9,9 @@ concurrency:
 
 jobs:
   preview:
-    # Security fixes keep the independent test/build check without creating
-    # a Firebase preview channel or its storage/deployment side effects.
-    if: github.event.pull_request.head.repo.full_name == github.repository && !startsWith(github.head_ref, 'security/')
+    # Security and dependency-update PRs keep independent test/build checks
+    # without creating Firebase preview channels or their deployment/storage.
+    if: github.event.pull_request.head.repo.full_name == github.repository && !startsWith(github.head_ref, 'security/') && github.event.pull_request.user.login != 'dependabot[bot]'
     runs-on: ubuntu-latest
     permissions:
       checks: write
